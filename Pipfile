@@ -5,16 +5,12 @@ name = "pypi"
 
 [packages]
 selenium = "*"
-mysql-connector-python = "*"
-fastapi = "*"
-jinja2 = "*"
-pytest = "*"
-uvicorn = "*"
-pandas = "*"
-python-dotenv = "*"
-pymysql = "*"
+beautifulsoup4 = "*"
 requests = "*"
-bs4 = "*"
+pandas = "*"
+pyarrow = "*"
+flake8 = "*"
+boto3 = "*"
 
 [dev-packages]
 
