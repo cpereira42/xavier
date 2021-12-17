@@ -6,9 +6,9 @@ import numpy as np
 
 data = get_all()
 df = pd.DataFrame(
-    np.array(data),
+    np.array(data, dtype=object),
     columns=[
             'NAME', 'STACKS'])
 
 table = pa.Table.from_pandas(df)
-pq.write_table(table, 'thor.parquet')
+pq.write_table(table, '../data_files/thor.parquet')
