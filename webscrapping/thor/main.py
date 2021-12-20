@@ -1,14 +1,11 @@
 from thor_bot import get_all
-from pyarrow import parquet as pq
-import pyarrow as pa
 import pandas as pd
-import numpy as np
+
 
 data = get_all()
 df = pd.DataFrame(
-    np.array(data, dtype=object),
+    data,
     columns=[
-            'NAME', 'STACKS'])
+            'name', 'stacks'])
 
-table = pa.Table.from_pandas(df)
-pq.write_table(table, '../data_files/thor.parquet')
+df.to_parquet('../data_files/thor.parquet')
