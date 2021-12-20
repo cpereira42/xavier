@@ -3,6 +3,13 @@ import boto3
 import os
 import configparser
 
+def upload_file_to_s3(name: str) -> None:
+    s3.upload_file(
+            f'data_files/{name}.parquet',
+            'ilia-ecole42-xavier',
+            f'raw_data/{name}.parquet')
+    return None
+
 # analisando o arquivo credentials que está na pasta .aws abaixo do home dir
 config = configparser.ConfigParser()
 path = os.path.join(os.path.expanduser('~'), '.aws/credentials')
@@ -29,21 +36,4 @@ response = s3.list_objects(
         Bucket='ilia-ecole42-xavier',
         Prefix='users',
         )
-
-# loop para mostrar o nome dos objetos (pastas e arquivos)
-# print(response['Contents'])
-# for obj in response['Contents']:
-#     if (obj['Key'] == 'users/lenzo-pe/'):
-#         lenzo = obj
-# pathing = 'ilia-ecole42-xavier/' + lenzo['Key']
-# print(pathing)
-# with open('startup.parquet', 'rb') as data:
-#     s3.upload_fileobj(data, 'ilia-ecole42-xavier', 'startup.parquet')
-s3.upload_file(
-        'data_files/startup.parquet',
-        'ilia-ecole42-xavier',
-        'raw_data/startup.parquet')
-s3.upload_file(
-        'data_files/thor.parquet',
-        'ilia-ecole42-xavier',
-        'raw_data/thor.parquet')
+upload_file_to_s3('thor')

@@ -11,6 +11,8 @@ pandas = "*"
 pyarrow = "*"
 flake8 = "*"
 boto3 = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

@@ -1,7 +1,4 @@
 import boto3
-import pyarrow as pr
-import pandas as pd
-import boto3
 import os
 import configparser
 
