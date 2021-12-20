@@ -37,6 +37,7 @@ user = os.getenv('DBUSER')
 passwd = os.getenv('DBPASS')
 port = os.getenv('DBPORT')
 database = os.getenv('DBNAME')
+
 engine = create_engine(f'postgresql://{user}:{passwd}\
 @{host}:{port}/{database}')
 
@@ -59,6 +60,7 @@ for i, name in enumerate(to_merge):
     df2 = pd.DataFrame(
         [[name, array]], columns=['name', 'stacks'])
     df = df.append(df2)
+
 df = df.reset_index(drop=True)
 
 df.to_sql('programathor', engine, if_exists='replace', index=False)

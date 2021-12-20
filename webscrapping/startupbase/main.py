@@ -27,10 +27,9 @@ data = get_all_pages_data(bodys)
 df = pd.DataFrame(
     np.array(data, dtype=object),
     columns=[
-            'NAME', 'ESTADO', 'MERCADO', 'MODELO', 'MODELO DE RECEITA',
-            'MOMENTO', 'TAMANHO', 'SEGMENTO', 'REDES'])
+            'name', 'cidade_estado', 'mercado', 'modelo', 'modelo de receita',
+            'momento', 'tamanho', 'segmento', 'redes'])
+
+df.to_parquet('../data_files/startup.parquet')
 
 print(df)
-
-table = pa.Table.from_pandas(df)
-pq.write_table(table, '../data_files/startup.parquet')

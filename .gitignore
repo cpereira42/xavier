@@ -6,4 +6,4 @@ login.env
 *.csv
 chromedriver
 env
-*.parquet
+.parquet

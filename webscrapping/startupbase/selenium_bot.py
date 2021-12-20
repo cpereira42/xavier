@@ -6,7 +6,7 @@ from time import sleep
 
 class startupbase(webdriver.Chrome):
     def __init__(self) -> None:
-        os.environ['PATH'] += ':/home/ferrari/SeleniumDrivers'
+        os.environ['PATH'] += ':/home/luigi/se_drivers'
         super(startupbase, self).__init__()
         self.implicitly_wait(5)
 
@@ -28,7 +28,7 @@ class startupbase(webdriver.Chrome):
             sleep(SCROLL_PAUSE_TIME)
             self.execute_script("arguments[0].scrollIntoView();", last_one)
             i += 1
-            if (i > 1):
+            if (i > 5):
                 break
         return None
 
