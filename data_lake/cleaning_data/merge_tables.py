@@ -20,7 +20,7 @@ df = df_startup
 df_thor = pd.read_sql('programathor', engine)
 
 
-def narray_colunm_to_list(column: pd) -> None:
+def narray_colunm_to_list(column) -> None:
     for i in range(len(column)):
         column[i] = column[i].tolist()
     return None
@@ -40,8 +40,10 @@ df['stacks'] = [[] for _ in df['name']]
 equal_l = show_equals(df_thor['name'], df_startup['name'])
 for i, name in enumerate(df['name']):
     if name in equal_l:
-        print(df_thor.loc[df_thor['name'] == name]['stacks'])
+        df['stacks'][i] =\
+            df_thor.loc[df_thor['name'] == name]['stacks'].to_string(
+                    index=False)
 
-# df['stacks'] = [str(i) for i in df['stacks']]
-# df = df.drop(columns=['stacks'])
-# df.to_sql('main', engine, if_exists='replace', index=False)
+
+df['stacks'] = [str(i) for i in df['stacks']]
+df.to_sql('main', engine, if_exists='replace', index=False)
