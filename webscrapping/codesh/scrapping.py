@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import requests
 from codesh_cls import Codesh
-from time import sleep
 
 BASE_URL = "https://coodesh.com/vagas"
 
@@ -31,8 +30,7 @@ soup = BeautifulSoup(
         features='html.parser'
         )
 
-print(soup.prettify())
-
+print(Codesh.get_company_link_profile(bot, links[0]))
 # for i in body_list:
 #     soup = BeautifulSoup(
 #             markup=i,
