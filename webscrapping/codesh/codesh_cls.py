@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
-import re
+from selenium.webdriver.common.by import By
+from webscrapping import WebScrapping
+# import re
 BASE_URL = "https://coodesh.com"
 
 
@@ -30,12 +32,11 @@ class Codesh:
         return [stack.text for stack in html_stacks]
 
     @staticmethod
-    def get_company_link_to_perfil(soup: BeautifulSoup):
-        return soup.select_one(
-                selector='#content > div:nth-child(1) > div > div >\
-        div.media-body > div > div.mb-3.mb-lg-0.col-lg-7 > div > ul > li > a'
-                )
-        # name = re.sub('[^a-zA-Z ]', '',
-        #               name.encode().decode('utf-8'))
-        # name = name.replace(' ', '-')
-        # return f'{BASE_URL}/empresas/{name.lower()}'
+    def get_company_link_profile(bot: WebScrapping, page: str) -> str:
+        bot.land_in_page(page=page)
+        return bot.find_element(
+                by=By.CSS_SELECTOR,
+                value='#content > div:nth-child(1) > div > div >\
+                        div.media-body >div > div.mb-3.mb-lg-0.col-lg-7 >\
+                        div > ul > li > a'
+                ).get_attribute('href')
