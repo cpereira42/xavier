@@ -1,11 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 
 def get_name_and_stacks(page: int) -> list:
     response = requests.get(
         "https://programathor.com.br/jobs/page/" + str(page))
-    soup = BeautifulSoup(response.content, features="html.parser")
+    soup = BeautifulSoup(response.content, "html.parser")
     elements = soup.select(".cell-list")
     the_list = list()
     for element in elements:

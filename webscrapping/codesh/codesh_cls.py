@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
-from webscrapping import WebScrapping
+from codesh_bot import WebScrapping
 # import re
 BASE_URL = "https://coodesh.com"
 
