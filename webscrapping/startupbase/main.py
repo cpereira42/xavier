@@ -1,7 +1,5 @@
 from selenium_bot import startupbase
 from beautiful_bot import get_all_infos
-from pyarrow import parquet as pq
-import pyarrow as pa
 import pandas as pd
 import numpy as np
 

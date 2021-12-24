@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
 
 def get_name_and_stacks(page: int) -> list:
