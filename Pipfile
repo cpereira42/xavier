@@ -14,6 +14,7 @@ flake8 = "*"
 boto3 = "*"
 python-dotenv = "*"
 sqlalchemy = "*"
+pyarrow = "*"
 
 [dev-packages]
 

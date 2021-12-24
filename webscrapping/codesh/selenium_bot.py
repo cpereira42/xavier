@@ -6,14 +6,13 @@ from time import sleep
 
 class Codesh(webdriver.Chrome):
     def __init__(
-        self, BASE_URL: str = None,
+        self,
         teardown: bool = False,
         implicit_wait: int = 0,
         driver_path: str = './',
         headless: bool = False
             ) -> None:
 
-        self.BASE_URL = BASE_URL
         self.teardown = teardown
         environ['PATH'] += driver_path
         super(Codesh, self).__init__()
