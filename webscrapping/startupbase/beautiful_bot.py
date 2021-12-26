@@ -35,6 +35,9 @@ def get_social_media(soup):
         pass
     return redes
 
+def get_website(soup: BeautifulSoup):
+    website = soup.select_one('a[class="publ-channel is-radius3 is-unselectable"]')
+    return website['href']
 
 def get_all_infos(body):
     soup = BeautifulSoup(body, "html.parser")
@@ -53,9 +56,11 @@ def get_all_infos(body):
 
     redes = get_social_media(soup)
 
+    website = get_website(soup)
+
     infos = [
         name, estado,
         top_box[0].text, top_box[1].text, top_box[2].text, top_box[3].text,
-        side_box[3].p.text, side_box[1].p.text, redes]
+        side_box[3].p.text, side_box[1].p.text, redes, website]
 
     return infos

@@ -25,8 +25,9 @@ data = get_all_pages_data(bodys)
 df = pd.DataFrame(
     np.array(data, dtype=object),
     columns=[
-            'name', 'cidade_estado', 'mercado', 'modelo', 'modelo de receita',
-            'momento', 'tamanho', 'segmento', 'redes'])
+            'name', 'cidade_estado', 'mercado',
+            'modelo', 'modelo de receita',
+            'momento', 'tamanho', 'segmento', 'redes', 'website'])
 
 df.to_parquet('../data_files/startup.parquet')
 

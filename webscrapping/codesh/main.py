@@ -22,7 +22,7 @@ def convert_to_list(companies: dict):
 
 
 bot = Codesh(
-    driver_path=':/home/ferrari/SeleniumDrivers',
+    driver_path=':/home/luigi/selenium_drivers/',
     implicit_wait=10,
 )
 bot.land_in_page(BASE_URL)
