@@ -28,7 +28,7 @@ class startupbase(webdriver.Chrome):
             sleep(SCROLL_PAUSE_TIME)
             self.execute_script("arguments[0].scrollIntoView();", last_one)
             i += 1
-            if (i > 2):
+            if (i > 10):
                 break
         return None
 

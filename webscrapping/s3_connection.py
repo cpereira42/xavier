@@ -38,3 +38,4 @@ response = s3.list_objects(
         )
 upload_file_to_s3('thor')
 upload_file_to_s3('startup')
+upload_file_to_s3('slintel')
