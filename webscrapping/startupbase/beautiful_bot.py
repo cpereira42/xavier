@@ -61,6 +61,6 @@ def get_all_infos(body):
     infos = [
         name, estado,
         top_box[0].text, top_box[1].text, top_box[2].text, top_box[3].text,
-        side_box[3].p.text, side_box[1].p.text, redes, website]
+        side_box[3].p.text, side_box[1].p.text, redes, website.strip()]
 
     return infos
