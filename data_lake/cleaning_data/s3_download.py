@@ -28,11 +28,18 @@ response = s3.list_objects(
         Bucket='ilia-ecole42-xavier',
         Prefix='users',
         )
+if (os.path.is_dir('./raw_data') == False):
+        os.mkdir('./raw_data')
 
 s3.download_file(
         'ilia-ecole42-xavier',
         'raw_data/thor.parquet',
         'raw_data/thor.parquet')
+
+s3.download_file(
+        'ilia-ecole42-xavier',
+        'raw_data/codesh.parquet',
+        'raw_data/codesh.parquet')
 
 s3.download_file(
         'ilia-ecole42-xavier',

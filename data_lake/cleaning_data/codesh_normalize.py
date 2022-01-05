@@ -1,40 +1,80 @@
+from posixpath import split
 import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from unidecode import unidecode
 import os
 import json
+import difflib
+
 
 # 'name', 'cidade', 'contato', 'stacks', 'mercado', 'tamanho', 'redes', 'website'
-
 df = pd.read_parquet('./raw_data/codesh.parquet')
 
 df['name'] = df['name'].str.lower().str.strip()
-""" city_json = dict()
+
+# cidades = ['sao paulo', 'Sao Paulo', 'são Paulo', 'São Paulo']
+
 for i, city in enumerate(df['cidade']):
-    if not city.isascii():
-        city = city.lower()
-        city_json[city] = unidecode(city.lower().strip())
-        df['cidade'][i] = unidecode(city.lower().strip())
-    else:
-        df['cidade'][i] = city.lower().strip() """
+    df['cidade'][i] = unidecode(city.lower().strip())
+
+for i, city in enumerate(df['cidade']):
+    df['cidade'][i] = unidecode(city.lower().strip())
 
 # print(json.dumps(city_json, indent=2))
 for i, lst in enumerate(df['stacks'].values):
     df['stacks'][i] = [unidecode(string.lower().strip()) for string in df['stacks'][i]]
+
 df['mercado'] = [unidecode(string.lower().strip()) for string in df['mercado'].values]
 
-""" def narray_colunm_to_list(column: pd) -> None:
-    for i in range(len(column)):
-        column[i] = column[i].tolist()
-    return None
+estados_dict = {
+        "acre": "ac",
+        "alagoas": "al",
+        "amapa": "ap",
+        "amazonas": "am",
+        "bahia": "ba",
+        "ceara": "ce",
+        "distrito federal": "df",
+        "espirito santo": "es",
+        "goias": "go",
+        "maranhao": "ma",
+        "mato grosso": "mt",
+        "mato grosso do sul": "ms",
+        "minas gerais": "mg",
+        "para": "pa",
+        "paraiba": "pb",
+        "parana": "pr",
+        "pernambuco": "pe",
+        "piaui": "pi",
+        "rio de janeiro": "rj",
+        "rio grande do norte": "rn",
+        "rio grande do sul": "rs",
+        "rondonia": "ro",
+        "roraima": "rr",
+        "santa catarina": "sc",
+        "sao paulo": "sp",
+        "sergipe": "se",
+        "tocantins": "to"
+        }
 
-mercado_json = dict()
-for i, mercado in enumerate(df['mercado']):
-    if not mercado.isascii():
-        mercado = mercado.lower()
-        mercado_json[mercado] = unidecode(mercado.lower().strip())
-        df['mercado'][i] = unidecode(mercado.lower().strip())
+df['estado'] = df['contato']
+for i, contato in enumerate(df['contato']):
+    contato = unidecode(contato.split(',')[-2].lower().strip())
+    if unidecode(contato) in estados_dict.keys():
+        df['estado'][i] = estados_dict[contato]
     else:
-        df['mercado'][i] = mercado.lower().strip() """
-print(df['cidade'].str.strip().str.lower())
+        df['estado'][i] = contato
+# df = df.loc[df['name'] != name]
+# df.to_csv('teste.csv', sep=',', index=False)
+
+load_dotenv('../../login.env')
+host = os.getenv('DBHOST')
+user = os.getenv('DBUSER')
+passwd = os.getenv('DBPASS')
+port = os.getenv('DBPORT')
+database = os.getenv('DBNAME')
+
+engine = create_engine(f'postgresql://{user}:{passwd}\
+@{host}:{port}/{database}')
+
+df.to_sql("codesh", engine, if_exists='replace', index=False)
