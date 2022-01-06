@@ -42,7 +42,6 @@ for i in range(len(df['name'])):
         df['estado'][i] = unidecode(ci_es[1])
         df['cidade'][i] = unidecode(ci_es[0])
 
-# print(df.columns)
 df = df.drop(['cidade_estado', 'redes'], axis=1)
 
 load_dotenv('../../login.env')
