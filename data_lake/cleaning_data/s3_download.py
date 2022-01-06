@@ -38,7 +38,7 @@ response = s3.list_objects(
     )
 
 path = './raw_data'
-if (os.path.exists(path) is False):
+if os.path.exists(path) is False:
     os.makedirs(path)
 
 download_file_from_s3('thor')
