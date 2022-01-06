@@ -1,11 +1,8 @@
-from posixpath import split
 import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from unidecode import unidecode
 import os
-import json
-import difflib
 
 
 # 'name', 'cidade', 'contato', 'stacks', 'mercado', 'tamanho', 'redes', 'website'
