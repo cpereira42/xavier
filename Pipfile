@@ -15,6 +15,9 @@ boto3 = "*"
 python-dotenv = "*"
 sqlalchemy = "*"
 pyarrow = "*"
+unidecode = "*"
+pip = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
