@@ -4,20 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pipenv = "*"
-install = "*"
 selenium = "*"
-beautifulsoup4 = "*"
-requests = "*"
+mysql-connector-python = "*"
+fastapi = "*"
+jinja2 = "*"
+pytest = "*"
+uvicorn = "*"
 pandas = "*"
-flake8 = "*"
-boto3 = "*"
 python-dotenv = "*"
-sqlalchemy = "*"
-pyarrow = "*"
-unidecode = "*"
-pip = "*"
-psycopg2-binary = "*"
+pymysql = "*"
+requests = "*"
+bs4 = "*"
 
 [dev-packages]
 
